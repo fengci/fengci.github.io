@@ -1133,3 +1133,7 @@ pre .chunk {
    End of file. Media queries should be the last thing here. Do not add stuff
    below this point, or it will probably fuck everything up.
    ========================================================================== */
+
+#cnzz_stat_icon_1000256305{
+    display: none;
+}
