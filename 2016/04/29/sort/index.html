@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>桶排序,冒泡排序,快速排序 for php | 2B青年</title>
+  <meta name="description" content="一个逗比的Blog" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="2B青年">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(http://7xnghc.com1.z0.glb.clouddn.com/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="http://7xnghc.com1.z0.glb.clouddn.com/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">2B青年</h1>
+            <h2 class="blog-description">一个逗比的Blog</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-04-29T01:51:48.000Z" itemprop="datePublished">
+          2016-04-29 9:51:48
+      </time>
+    
+</span>
+    <h1 class="post-title">桶排序,冒泡排序,快速排序 for php</h1>
+    <section class="post-content">
+      <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">function QuickSort(&amp;$arr,$left,$right)&#123;</span><br><span class="line"></span><br><span class="line">	if($left &gt; $right) return;</span><br><span class="line"></span><br><span class="line">	//基准数</span><br><span class="line">	$temp = $arr[$left];</span><br><span class="line">	//i j </span><br><span class="line">	$i = $left;</span><br><span class="line">	$j = $right;</span><br><span class="line">	while ($i != $j) &#123;</span><br><span class="line">		# code..</span><br><span class="line">		//从右边开始找到比基准数小的</span><br><span class="line">		while ($arr[$j] &gt;= $temp &amp;&amp; $i &lt; $j) &#123;</span><br><span class="line">			# code...</span><br><span class="line">			$j--;</span><br><span class="line">		&#125;</span><br><span class="line">		//左边开始找比基准数大的</span><br><span class="line">		while ($arr[$i] &lt;= $temp &amp;&amp; $i &lt; $j) &#123;</span><br><span class="line">			# code...</span><br><span class="line">			$i++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if($i &lt; $j)&#123;</span><br><span class="line">			$t = $arr[$j];</span><br><span class="line">			$arr[$j] = $arr[$i];</span><br><span class="line">			$arr[$i] = $t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//基准数重置</span><br><span class="line">	$arr[$left] = $arr[$i];</span><br><span class="line">	$arr[$i] = $temp;</span><br><span class="line">	//继续跑左边</span><br><span class="line">	QuickSort($arr,$left,$i - 1);</span><br><span class="line">	//继续跑右边</span><br><span class="line">	QuickSort($arr,$i + 1,$right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function BubbleSort($arr)&#123;</span><br><span class="line">	$tmp = &apos;&apos;;</span><br><span class="line">	for ($i=0; $i &lt; count($arr) - 1; $i++) &#123; </span><br><span class="line">		for ($j=0; $j &lt; count($arr) - $i - 1; $j++) &#123; </span><br><span class="line">			# code...</span><br><span class="line">			if($arr[$j] &lt; $arr[$j + 1])&#123;</span><br><span class="line">				$tmp = $arr[$j];</span><br><span class="line">				$arr[$j] = $arr[$j + 1];</span><br><span class="line">				$arr[$j + 1] = $tmp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function BucketSort($arr)&#123;</span><br><span class="line">	$tmp = array();</span><br><span class="line">	//规整数据</span><br><span class="line">	//把数据往对应的下标索引递增。下标的值是数据出现的次数。</span><br><span class="line">	foreach ($arr as $key =&gt; $value) &#123;</span><br><span class="line">		if(isset($tmp[$value]))&#123;</span><br><span class="line">			$tmp[$value]++;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			$tmp[$value] = 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//对数组进行键值进行降序排列</span><br><span class="line">	krsort($tmp);</span><br><span class="line">	//打印出结果</span><br><span class="line">	$res = &apos;&apos;;</span><br><span class="line">	foreach ($tmp as $key =&gt; $value) &#123;</span><br><span class="line">		for ($i=0; $i &lt; $value; $i++) &#123; </span><br><span class="line">			$res .= $key . &apos;,&apos;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return trim($res,&apos;,&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>项羽大大</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://fengci.github.io/2016/04/29/sort/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://fengci.github.io/2016/04/29/sort/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://fengci.github.io/2016/04/29/sort/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/04/19/referer/">
+        盗链之 - Referer →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+
+<div class="ds-thread" data-thread-key="2016/04/29/sort/" data-title="桶排序,冒泡排序,快速排序 for php" data-url="http://fengci.github.io/2016/04/29/sort/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"fengci"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">2B青年</a> &copy; 2016 &bull; All rights reserved.</section>
+  </div>
+</footer>
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+<!--百度统计 start-->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000256305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s96.cnzz.com/z_stat.php%3Fid%3D1000256305' type='text/javascript'%3E%3C/script%3E"));</script>
+<!--百度统计 end-->
+
+
+
+
+
+
+</body>
+</html>
