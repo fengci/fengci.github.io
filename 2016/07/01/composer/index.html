@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>如何安装composer | 2B青年</title>
+  <meta name="description" content="一个逗比的Blog" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="2B青年">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(http://7xnghc.com1.z0.glb.clouddn.com/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="http://7xnghc.com1.z0.glb.clouddn.com/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">2B青年</h1>
+            <h2 class="blog-description">一个逗比的Blog</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-07-01T14:33:12.000Z" itemprop="datePublished">
+          2016-07-01 22:33:12
+      </time>
+    
+</span>
+    <h1 class="post-title">如何安装composer</h1>
+    <section class="post-content">
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><hr>
+<blockquote>
+<p>composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。</p>
+</blockquote>
+<h2 id="如何安装-Composer"><a href="#如何安装-Composer" class="headerlink" title="如何安装 Composer"></a>如何安装 Composer</h2><hr>
+<blockquote>
+<p>安装前请务必确保已经正确安装了 PHP。打开命令行窗口并执行 <code>php -v</code> 查看是否正确输出版本号。</p>
+</blockquote>
+<p>打开命令行并执行下列命令安装最新版本的 Composer (以下指令摘自 <a href="https://getcomposer.org/download/" target="_blank" rel="external">https://getcomposer.org/download/</a> ，请前往查看最新的安装指令)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php -r &quot;readfile(&apos;https://getcomposer.org/installer&apos;);&quot; &gt; composer-setup.php</span><br><span class="line"></span><br><span class="line">php composer-setup.php</span><br><span class="line"></span><br><span class="line">php -r &quot;unlink(&apos;composer-setup.php&apos;);&quot;</span><br></pre></td></tr></table></figure>
+<p>执行第一条命令下载下来的 <code>composer-setup.php</code> 脚本将简单的检测 <code>php.ini</code> 中的参数设置，如果某些参数未正确设置则会给出警告；然后下载最新版本的 <code>composer.phar</code> 文件到当前目录。</p>
+<p>上述 3 条命令的作用依次是：</p>
+<ol>
+<li>下载安装脚本（<code>composer-setup.php</code>）到当前目录。  </li>
+<li>执行安装过程。  </li>
+<li>删除安装脚本 – <code>composer-setup.php</code> 。  </li>
+</ol>
+<h2 id="局部安装"><a href="#局部安装" class="headerlink" title="局部安装"></a>局部安装</h2><hr>
+<p>上述下载 Composer 的过程正确执行完毕后，可以将 <code>composer.phar</code> 文件复制到任意目录（比如项目根目录下），然后通过 <code>php composer.phar</code> 指令即可使用 Composer 了！</p>
+<h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><hr>
+<p>全局安装是将 Composer 安装到系统环境变量 <code>PATH</code> 所包含的路径下面，然后就能够在命令行窗口中直接执行 <code>composer</code> 命令了。</p>
+<p>Mac 或 Linux 系统：打开命令行窗口并执行如下命令将前面下载的 <code>composer.phar</code> 文件移动到 <code>/usr/local/bin/</code> 目录下面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo mv composer.phar /usr/local/bin/composer</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">Windows 系统：</span><br><span class="line"></span><br><span class="line">找到并进入 PHP 的安装目录（和你在命令行中执行的 `php` 指令应该是同一套 PHP）。</span><br><span class="line">将 `composer.phar` 复制到 PHP 的安装目录下面，也就是和 `php.exe` 在同一级目录。</span><br><span class="line">在 PHP 安装目录下新建一个 `composer.bat` 文件，并将下列代码保存到此文件中。</span><br></pre></td></tr></table></figure>
+<p>@php “%~dp0composer.phar” %*</p>
+<p><code>``
+最后重新打开一个命令行窗口试一试执行</code>composer –version` 看看是否正确输出版本号。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><hr>
+<blockquote>
+<p>提示：不要忘了经常执行 <code>composer selfupdate</code> 以保持 Composer 一直是最新版本哦！</p>
+</blockquote>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>项羽大大</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://fengci.github.io/2016/07/01/composer/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://fengci.github.io/2016/07/01/composer/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://fengci.github.io/2016/07/01/composer/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/04/29/sort/">
+        排序 for php →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+
+<div class="ds-thread" data-thread-key="2016/07/01/composer/" data-title="如何安装composer" data-url="http://fengci.github.io/2016/07/01/composer/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"fengci"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">2B青年</a> &copy; 2016 &bull; All rights reserved.</section>
+  </div>
+</footer>
+  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+<!--百度统计 start-->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000256305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s96.cnzz.com/z_stat.php%3Fid%3D1000256305' type='text/javascript'%3E%3C/script%3E"));</script>
+<!--百度统计 end-->
+
+
+
+
+
+
+</body>
+</html>
