@@ -106,7 +106,7 @@ Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖
 安装前请务必确保已经正确安装了 PHP。打开命令行窗口并执行 php -v 查看是否正确输出版本号。
 
 打开命令行并执行下列命令安装最新版本的 Composer (以下指令摘自 https://getcomposer.org/download/">
-<meta property="og:updated_time" content="2016-08-10T15:08:24.000Z">
+<meta property="og:updated_time" content="2016-08-11T00:46:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何安装Composer">
 <meta name="twitter:description" content="简介
@@ -331,8 +331,8 @@ Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖
 <p>Mac 或 Linux 系统：打开命令行窗口并执行如下命令将前面下载的 <code>composer.phar</code> 文件移动到 <code>/usr/local/bin/</code> 目录下面：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo mv composer.phar /usr/local/bin/composer</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">Windows 系统：</span><br><span class="line"></span><br><span class="line">找到并进入 PHP 的安装目录（和你在命令行中执行的 `php` 指令应该是同一套 PHP）。</span><br><span class="line">将 `composer.phar` 复制到 PHP 的安装目录下面，也就是和 `php.exe` 在同一级目录。</span><br><span class="line">在 PHP 安装目录下新建一个 `composer.bat` 文件，并将下列代码保存到此文件中。</span><br></pre></td></tr></table></figure>
 <p>@php “%~dp0composer.phar” %*</p>
-<p><code>``
-最后重新打开一个命令行窗口试一试执行</code>composer –version` 看看是否正确输出版本号。</p>
+<p>```</p>
+<p>最后重新打开一个命令行窗口试一试执行 <code>composer --version</code> 看看是否正确输出版本号。</p>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><hr>
 <blockquote>
 <p>提示：不要忘了经常执行 <code>composer selfupdate</code> 以保持 Composer 一直是最新版本哦！</p>
