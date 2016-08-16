@@ -84,15 +84,28 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="2B青年">
-<meta property="og:url" content="http://fengci.github.io/archives/2016/03/index.html">
+<meta name="description" content="需要跑一个脚本插入数据,用cURL方式,本地配置了虚拟主机映射了域名。没想到cURL居然没走hosts直接穿透出去了,我本地hosts配置127.0.0.1 www.example.dev
+
+
+解决办法请求的URL不能写映射的域名，需要些本机的IP，然后你还需要加一个header头Host: www.example.dev
+12345678910111213$header = array(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php cURL跳过了本地的hosts">
+<meta property="og:url" content="http://fengci.github.io/2016/08/16/php-cURL-does-not-see-hosts/index.html">
 <meta property="og:site_name" content="2B青年">
-<meta property="og:description">
+<meta property="og:description" content="需要跑一个脚本插入数据,用cURL方式,本地配置了虚拟主机映射了域名。没想到cURL居然没走hosts直接穿透出去了,我本地hosts配置127.0.0.1 www.example.dev
+
+
+解决办法请求的URL不能写映射的域名，需要些本机的IP，然后你还需要加一个header头Host: www.example.dev
+12345678910111213$header = array(">
+<meta property="og:updated_time" content="2016-08-16T06:49:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2B青年">
-<meta name="twitter:description">
+<meta name="twitter:title" content="php cURL跳过了本地的hosts">
+<meta name="twitter:description" content="需要跑一个脚本插入数据,用cURL方式,本地配置了虚拟主机映射了域名。没想到cURL居然没走hosts直接穿透出去了,我本地hosts配置127.0.0.1 www.example.dev
+
+
+解决办法请求的URL不能写映射的域名，需要些本机的IP，然后你还需要加一个header头Host: www.example.dev
+12345678910111213$header = array(">
 
 
 
@@ -113,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://fengci.github.io/archives/2016/03/"/>
+  <link rel="canonical" href="http://fengci.github.io/2016/08/16/php-cURL-does-not-see-hosts/"/>
 
-  <title> 归档 | 2B青年 </title>
+  <title> php cURL跳过了本地的hosts | 2B青年 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,66 +227,127 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 5 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                php cURL跳过了本地的hosts
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-16T14:48:44+08:00" content="2016-08-16">
+              2016-08-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/16/php-cURL-does-not-see-hosts/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/16/php-cURL-does-not-see-hosts/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <blockquote>
+<p>需要跑一个脚本插入数据,用<code>cURL</code>方式,本地配置了虚拟主机映射了域名。没想到<code>cURL</code>居然没走<code>hosts</code>直接穿透出去了,我本地<code>hosts</code>配置<code>127.0.0.1 www.example.dev</code></p>
+</blockquote>
+<hr>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>请求的<code>URL</code>不能写映射的域名，需要些本机的<code>IP</code>，然后你还需要加一个<code>header</code>头<code>Host: www.example.dev</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$header = array</span><br><span class="line">(</span><br><span class="line">    &quot;Host: www.example.dev&quot;, // IMPORTANT</span><br><span class="line">    &quot;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot;,</span><br><span class="line">    &quot;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3&quot;,</span><br><span class="line">    &quot;Accept-Encoding: gzip,deflate,sdch&quot;,</span><br><span class="line">    &quot;Accept-Language: it-IT,it;q=0.8,en-US;q=0.6,en;q=0.4&quot;,</span><br><span class="line">    &quot;Cache-Control: max-age=0&quot;,</span><br><span class="line">    &quot;Connection: keep-alive&quot;,</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">curl_setopt($this-&gt;ch, CURLOPT_URL, &apos;http://127.0.1/&apos;);</span><br><span class="line">curl_setopt($this-&gt;ch, CURLOPT_HTTPHEADER, $header);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/01/composer/" rel="next" title="如何安装Composer">
+                <i class="fa fa-chevron-left"></i> 如何安装Composer
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
         </div>
       
-      
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/23/hexo/" itemprop="url">
-              
-                <span itemprop="name">hexo</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-23T14:02:54+08:00"
-              content="2016-03-23" >
-          03-23
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -281,6 +355,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/16/php-cURL-does-not-see-hosts/"
+           data-title="php cURL跳过了本地的hosts" data-url="http://fengci.github.io/2016/08/16/php-cURL-does-not-see-hosts/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -300,8 +382,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -337,6 +428,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">1.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -433,11 +535,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
