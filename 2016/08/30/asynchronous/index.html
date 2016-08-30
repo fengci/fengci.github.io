@@ -84,31 +84,28 @@
 
 
 
-<meta name="description" content="php升级碰到的坑
-某天重新编译了PHP，然后就有了这篇文章. 大写的坑
+<meta name="description" content="问题：需要请求一个推送的结果，不需要知道他的返回结果，有时候接口会很慢造成自身业务时间太长
+解决：鸟哥的PHP实现异步调用方法研究
 
-
-未拷贝新编译php到/etc/bin/php，使得服务器读到的还是老版本然后使用composer去更新插件的时候老报环境错误,然后调试了phpinfo()环境是对的,一头雾水找不到问题。
-新的php.ini错误提示(display_errors)未开启,然后就呵呵了,写入session的时候一直没看到错误,然后一直折腾一">
+浏览器和服务器之间是通过 HTTP 协议进行连接通讯的。这是一种基于请求和响应模型的协议。浏览器通过 URL 向服务器发起请求，Web 服务器接收到请求，执行一段程序，然后做出响应，发送相应的html代码给客户端。
+这就有了一个问题，Web 服务器执行一段程序，可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小记php的坑(一)">
-<meta property="og:url" content="http://blog.caocode.com/2016/08/19/php-bug/index.html">
+<meta property="og:title" content="asynchronous">
+<meta property="og:url" content="http://blog.caocode.com/2016/08/30/asynchronous/index.html">
 <meta property="og:site_name" content="艹代码">
-<meta property="og:description" content="php升级碰到的坑
-某天重新编译了PHP，然后就有了这篇文章. 大写的坑
+<meta property="og:description" content="问题：需要请求一个推送的结果，不需要知道他的返回结果，有时候接口会很慢造成自身业务时间太长
+解决：鸟哥的PHP实现异步调用方法研究
 
-
-未拷贝新编译php到/etc/bin/php，使得服务器读到的还是老版本然后使用composer去更新插件的时候老报环境错误,然后调试了phpinfo()环境是对的,一头雾水找不到问题。
-新的php.ini错误提示(display_errors)未开启,然后就呵呵了,写入session的时候一直没看到错误,然后一直折腾一">
-<meta property="og:updated_time" content="2016-08-19T09:22:46.000Z">
+浏览器和服务器之间是通过 HTTP 协议进行连接通讯的。这是一种基于请求和响应模型的协议。浏览器通过 URL 向服务器发起请求，Web 服务器接收到请求，执行一段程序，然后做出响应，发送相应的html代码给客户端。
+这就有了一个问题，Web 服务器执行一段程序，可">
+<meta property="og:updated_time" content="2016-08-30T11:11:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小记php的坑(一)">
-<meta name="twitter:description" content="php升级碰到的坑
-某天重新编译了PHP，然后就有了这篇文章. 大写的坑
+<meta name="twitter:title" content="asynchronous">
+<meta name="twitter:description" content="问题：需要请求一个推送的结果，不需要知道他的返回结果，有时候接口会很慢造成自身业务时间太长
+解决：鸟哥的PHP实现异步调用方法研究
 
-
-未拷贝新编译php到/etc/bin/php，使得服务器读到的还是老版本然后使用composer去更新插件的时候老报环境错误,然后调试了phpinfo()环境是对的,一头雾水找不到问题。
-新的php.ini错误提示(display_errors)未开启,然后就呵呵了,写入session的时候一直没看到错误,然后一直折腾一">
+浏览器和服务器之间是通过 HTTP 协议进行连接通讯的。这是一种基于请求和响应模型的协议。浏览器通过 URL 向服务器发起请求，Web 服务器接收到请求，执行一段程序，然后做出响应，发送相应的html代码给客户端。
+这就有了一个问题，Web 服务器执行一段程序，可">
 
 
 
@@ -129,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://blog.caocode.com/2016/08/19/php-bug/"/>
+  <link rel="canonical" href="http://blog.caocode.com/2016/08/30/asynchronous/"/>
 
-  <title> 小记php的坑(一) | 艹代码 </title>
+  <title> asynchronous | 艹代码 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +258,7 @@
             
             
               
-                小记php的坑(一)
+                asynchronous
               
             
           </h1>
@@ -273,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-19T17:14:24+08:00" content="2016-08-19">
-              2016-08-19
+            <time itemprop="dateCreated" datetime="2016-08-30T19:02:00+08:00" content="2016-08-30">
+              2016-08-30
             </time>
           </span>
 
@@ -284,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/19/php-bug/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/19/php-bug/" itemprop="commentsCount"></span>
+                <a href="/2016/08/30/asynchronous/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/asynchronous/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,13 +305,27 @@
       
 
       
-        <h2 id="php升级碰到的坑"><a href="#php升级碰到的坑" class="headerlink" title="php升级碰到的坑"></a>php升级碰到的坑</h2><blockquote>
-<p>某天重新编译了PHP，然后就有了这篇文章. 大写的坑</p>
-</blockquote>
-<ol>
-<li>未拷贝新编译php到/etc/bin/php，使得服务器读到的还是老版本然后使用<code>composer</code>去更新插件的时候老报环境错误,然后调试了<code>phpinfo()</code>环境是对的,一头雾水找不到问题。</li>
-<li>新的<code>php.ini</code>错误提示(<code>display_errors</code>)未开启,然后就呵呵了,写入<code>session</code>的时候一直没看到错误,然后一直折腾一直折腾,最后开启了错误,看到了问题才发现服务器空间满了,空间满了,满了 ~_~</li>
-</ol>
+        <ul>
+<li>问题：需要请求一个推送的结果，不需要知道他的返回结果，有时候接口会很慢造成自身业务时间太长</li>
+<li>解决：鸟哥的<a href="http://www.laruence.com/2008/04/14/318.html" target="_blank" rel="external"><code>PHP实现异步调用方法研究</code></a></li>
+</ul>
+<p>浏览器和服务器之间是通过 HTTP 协议进行连接通讯的。这是一种基于请求和响应模型的协议。浏览器通过 URL 向服务器发起请求，Web 服务器接收到请求，执行一段程序，然后做出响应，发送相应的html代码给客户端。</p>
+<p>这就有了一个问题，Web 服务器执行一段程序，可能几毫秒就完成，也可能几分钟都完不成。如果程序执行缓慢，用户可能没有耐心等下去，就关闭浏览器了。</p>
+<p>而有的时候，我们更本不关心这些耗时的脚本的返回结果，但却还要等他执行完返回，才能继续下一步。<br>那么有没有什么办法，只是简单的触发调用这些耗时的脚本然后就继续下一步，让这些耗时的脚本在服务端慢慢执行？</p>
+<p>经过试验，总结出来几种方法，和大家share：  </p>
+<h4 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a><code>ajax</code></h4><p>最简单的办法，就是在返回给客户端的HTML代码中，嵌入AJAX调用，或者，嵌入一个img标签，src指向要执行的耗时脚本。<br>这种方法最简单，也最快。服务器端不用做任何的调用。<br>但是缺点是，一般来说Ajax都应该在onLoad以后触发，也就是说，用户点开页面后，就关闭，那就不会触发我们的后台脚本了。<br>而使用img标签的话，这种方式不能称为严格意义上的异步执行。用户浏览器会长时间等待php脚本的执行完成，也就是用户浏览器的状态栏一直显示还在load。<br>当然，还可以使用其他的类似原理的方法，比如script标签等等。</p>
+<hr>
+<h4 id="popen"><a href="#popen" class="headerlink" title="popen()"></a><code>popen()</code></h4><p>resource popen ( string command, string mode );<br>//打开一个指向进程的管道，该进程由派生给定的 command 命令执行而产生。打开一个指向进程的管道，该进程由派生给定的 command 命令执行而产生。</p>
+<p>所以可以通过调用它，但忽略它的输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pclose(popen(&quot;/home/xinchen/backend.php &amp;&quot;, &apos;r&apos;));</span><br></pre></td></tr></table></figure>
+<p>这个方法避免了第一个方法的缺点，并且也很快。但是问题是，这种方法不能通过HTTP协议请求另外的一个WebService，只能执行本地的脚本文件。并且只能单向打开，无法穿大量参数给被调用脚本。<br>并且如果，访问量很高的时候，会产生大量的进程。如果使用到了外部资源，还要自己考虑竞争。</p>
+<hr>
+<h4 id="使用CURL"><a href="#使用CURL" class="headerlink" title="使用CURL"></a><code>使用CURL</code></h4><p>这个方法，设置CUROPT_TIMEOUT为1（最小为1，郁闷）。也就是说，客户端至少必须等待1秒钟。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ch = curl_init();</span><br><span class="line"> </span><br><span class="line">$curl_opt = array(CURLOPT_URL, &apos;http://www.example.com/backend.php&apos;,</span><br><span class="line">                            CURLOPT_RETURNTRANSFER, 1,</span><br><span class="line">                            CURLOPT_TIMEOUT, 1,);</span><br><span class="line"> </span><br><span class="line">curl_setopt_array($ch, $curl_opt);</span><br><span class="line"> </span><br><span class="line">curl_exec($ch);</span><br><span class="line"> </span><br><span class="line">curl_close($ch);</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="使用fsockopen"><a href="#使用fsockopen" class="headerlink" title="使用fsockopen"></a><code>使用fsockopen</code></h4><p>这个方法应该是最完美的，但是缺点是，你需要自己拼出HTTP的header部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$fp = fsockopen(&quot;www.example.com&quot;, 80, $errno, $errstr, 30);</span><br><span class="line">if (!$fp) &#123;</span><br><span class="line">    echo &quot;$errstr ($errno)&lt;br /&gt;\n&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $out = &quot;GET /backend.php  / HTTP/1.1\r\n&quot;;</span><br><span class="line">    $out .= &quot;Host: www.example.com\r\n&quot;;</span><br><span class="line">    $out .= &quot;Connection: Close\r\n\r\n&quot;;</span><br><span class="line"> </span><br><span class="line">    fwrite($fp, $out);</span><br><span class="line">    /*忽略执行结果</span><br><span class="line">    while (!feof($fp)) &#123;</span><br><span class="line">        echo fgets($fp, 128);</span><br><span class="line">    &#125;*/</span><br><span class="line">    fclose($fp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，总体来看，最好用，最简单的还是第一种方法。<br>最完美的应该是最后一种，但是比较复杂</p>
 
       
     </div>
@@ -348,17 +359,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/16/php-mysql-data/" rel="next" title="php mysql数据字典工具">
-                <i class="fa fa-chevron-left"></i> php mysql数据字典工具
+              <a href="/2016/08/19/php-bug/" rel="next" title="小记php的坑(一)">
+                <i class="fa fa-chevron-left"></i> 小记php的坑(一)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/30/asynchronous/" rel="prev" title="asynchronous">
-                asynchronous <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -384,8 +391,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/19/php-bug/"
-           data-title="小记php的坑(一)" data-url="http://blog.caocode.com/2016/08/19/php-bug/">
+      <div class="ds-thread" data-thread-key="2016/08/30/asynchronous/"
+           data-title="asynchronous" data-url="http://blog.caocode.com/2016/08/30/asynchronous/">
       </div>
     
   </div>
@@ -508,7 +515,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#php升级碰到的坑"><span class="nav-number">1.</span> <span class="nav-text">php升级碰到的坑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ajax"><span class="nav-number">1.</span> <span class="nav-text">ajax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#popen"><span class="nav-number">2.</span> <span class="nav-text">popen()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用CURL"><span class="nav-number">3.</span> <span class="nav-text">使用CURL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用fsockopen"><span class="nav-number">4.</span> <span class="nav-text">使用fsockopen</span></a></li></ol></div>
             
           </div>
         </section>

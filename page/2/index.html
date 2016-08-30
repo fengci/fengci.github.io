@@ -248,6 +248,109 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/29/sort/" itemprop="url">
+                  排序 for php
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-29T09:51:48+08:00" content="2016-04-29">
+              2016-04-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/29/sort/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/sort/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">function QuickSort(&amp;$arr,$left,$right)&#123;</span><br><span class="line"></span><br><span class="line">	if($left &gt; $right) return;</span><br><span class="line"></span><br><span class="line">	//基准数</span><br><span class="line">	$temp = $arr[$left];</span><br><span class="line">	//i j </span><br><span class="line">	$i = $left;</span><br><span class="line">	$j = $right;</span><br><span class="line">	while ($i != $j) &#123;</span><br><span class="line">		# code..</span><br><span class="line">		//从右边开始找到比基准数小的</span><br><span class="line">		while ($arr[$j] &gt;= $temp &amp;&amp; $i &lt; $j) &#123;</span><br><span class="line">			# code...</span><br><span class="line">			$j--;</span><br><span class="line">		&#125;</span><br><span class="line">		//左边开始找比基准数大的</span><br><span class="line">		while ($arr[$i] &lt;= $temp &amp;&amp; $i &lt; $j) &#123;</span><br><span class="line">			# code...</span><br><span class="line">			$i++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if($i &lt; $j)&#123;</span><br><span class="line">			$t = $arr[$j];</span><br><span class="line">			$arr[$j] = $arr[$i];</span><br><span class="line">			$arr[$i] = $t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//基准数重置</span><br><span class="line">	$arr[$left] = $arr[$i];</span><br><span class="line">	$arr[$i] = $temp;</span><br><span class="line">	//继续跑左边</span><br><span class="line">	QuickSort($arr,$left,$i - 1);</span><br><span class="line">	//继续跑右边</span><br><span class="line">	QuickSort($arr,$i + 1,$right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function BubbleSort($arr)&#123;</span><br><span class="line">	$tmp = &apos;&apos;;</span><br><span class="line">	for ($i=0; $i &lt; count($arr) - 1; $i++) &#123; </span><br><span class="line">		for ($j=0; $j &lt; count($arr) - $i - 1; $j++) &#123; </span><br><span class="line">			# code...</span><br><span class="line">			if($arr[$j] &lt; $arr[$j + 1])&#123;</span><br><span class="line">				$tmp = $arr[$j];</span><br><span class="line">				$arr[$j] = $arr[$j + 1];</span><br><span class="line">				$arr[$j + 1] = $tmp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function BucketSort($arr)&#123;</span><br><span class="line">	$tmp = array();</span><br><span class="line">	//规整数据</span><br><span class="line">	//把数据往对应的下标索引递增。下标的值是数据出现的次数。</span><br><span class="line">	foreach ($arr as $key =&gt; $value) &#123;</span><br><span class="line">		if(isset($tmp[$value]))&#123;</span><br><span class="line">			$tmp[$value]++;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			$tmp[$value] = 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//对数组进行键值进行降序排列</span><br><span class="line">	krsort($tmp);</span><br><span class="line">	//打印出结果</span><br><span class="line">	$res = &apos;&apos;;</span><br><span class="line">	foreach ($tmp as $key =&gt; $value) &#123;</span><br><span class="line">		for ($i=0; $i &lt; $value; $i++) &#123; </span><br><span class="line">			$res .= $key . &apos;,&apos;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return trim($res,&apos;,&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/19/referer/" itemprop="url">
                   盗链之 - Referer
                 </a>
@@ -484,7 +587,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
